@@ -9,6 +9,7 @@ public class FlatteningArrays {
 
     public static Object[] nonRecursiveFlatten(Object[] array) {
         validateArray(array);
+
         return null;
     }
 
@@ -19,8 +20,7 @@ public class FlatteningArrays {
         for (Object element : array) {
             if (element instanceof Object[]) {
                 Object[] flattenedArray = recursiveFlatten((Object[]) element);
-                Arrays.stream(flattenedArray)
-                        .forEach(total::add);
+                total.addAll(Arrays.asList(flattenedArray));
             } else {
                 total.add(element);
             }
