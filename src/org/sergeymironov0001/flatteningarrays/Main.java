@@ -13,11 +13,40 @@ public class Main {
     }
 
     private static void testFlattening(IFlatteningArrays flatteningArrays) {
-        Object[] array = createArray(1, 2, 3, createArray(4, 5));
+        // [[1, 2],[3, 4, 5], [6, 7, 8, 9]]
+        Object[] array = createArray(
+                createArray(1, 2),
+                createArray(3, 4, 5),
+                createArray(6, 7, 8, 9)
+        );
         System.out.println(Arrays.asList(flatteningArrays.flatten(array)));
 
-        Object[] array1 = createArray(1, createArray(2, createArray(3, createArray(4, 5))));
+
+        // [[[1, [2]],[3, 4, 5]], [6, [7, [8]],9]]
+        Object[] array1 = createArray(
+                createArray(
+                        createArray(1,
+                                createArray(2)),
+                        createArray(3, 4, 5)),
+                createArray(6,
+                        createArray(7, createArray(8)),
+                        9)
+        );
         System.out.println(Arrays.asList(flatteningArrays.flatten(array1)));
+
+
+        // [[1,[2,[[3]]]],4,[5,[[[6]]]]]
+        Object[] array2 = createArray(
+                createArray(1,
+                        createArray(2,
+                                createArray(3))),
+                4,
+                createArray(5,
+                        createArray(
+                                createArray(
+                                        createArray(6))))
+        );
+        System.out.println(Arrays.asList(flatteningArrays.flatten(array2)));
     }
 
 
