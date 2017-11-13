@@ -13,7 +13,7 @@ public class Main {
     }
 
     private static void testFlattening(IFlatteningArrays flatteningArrays) {
-        // [[1, 2],[3, 4, 5], [6, 7, 8, 9]]
+        // [[1, 2], [3, 4, 5], [6, 7, 8, 9]]
         Object[] array = createArray(
                 createArray(1, 2),
                 createArray(3, 4, 5),
@@ -22,7 +22,7 @@ public class Main {
         System.out.println(Arrays.asList(flatteningArrays.flatten(array)));
 
 
-        // [[[1, [2]],[3, 4, 5]], [6, [7, [8]],9]]
+        // [[[1, [2]], [3, 4, 5]], [6, [7, [8]], 9]]
         Object[] array1 = createArray(
                 createArray(
                         createArray(1,
@@ -35,7 +35,7 @@ public class Main {
         System.out.println(Arrays.asList(flatteningArrays.flatten(array1)));
 
 
-        // [[1,[2,[[3]]]],4,[5,[[[6]]]]]
+        // [[1, [2, [[3]]]], 4, [5, [[[6]]]]]
         Object[] array2 = createArray(
                 createArray(1,
                         createArray(2,
